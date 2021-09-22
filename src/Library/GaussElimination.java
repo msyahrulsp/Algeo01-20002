@@ -6,16 +6,16 @@ import Library.Matriks;
 // OUTPUT : Matriks Eselon Baris
 public class GaussElimination {
 
-    public static void displayMatrix(Matriks m) {
-        int i, j;
-        for (i=0; i<m.baris; i++) {
-            for (j=0; j<m.kolom; j++)
-            {
-                System.out.print(m.ELMT[i][j] + " ");
-            }
-            System.out.print("\n");
-        }
-    }
+//     public static void displayMatrix(Matriks m) {
+//         int i, j;
+//         for (i=0; i<m.baris; i++) {
+//             for (j=0; j<m.kolom; j++)
+//             {
+//                 System.out.print(m.ELMT[i][j] + " ");
+//             }
+//             System.out.print("\n");
+//         }
+//     }
 
     public static void swapRow(Matriks m, int brs1, int brs2) {
         for (int j = 0; j<m.kolom; j++) {
