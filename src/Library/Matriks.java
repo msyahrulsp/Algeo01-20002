@@ -2,9 +2,11 @@ package Library;
 
 public class Matriks {
     public int baris, kolom, idxBrs, idxKol, nSol;
+    public double[][] ELMT;
 
     // Konstruktor
-    public Matriks(int baris, int kolom) {
+    public Matriks(double[][] ELMT, int baris, int kolom) {
+        this.ELMT = ELMT;
         this.baris = baris;
         this.kolom = kolom;
     }
