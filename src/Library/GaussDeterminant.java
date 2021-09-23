@@ -1,0 +1,15 @@
+package Library;
+
+public class GaussDeterminant {
+
+    public static void gaussDeterminant(Matriks m) {
+        GaussElimination.gaussElimination(m);
+        int swapCount = GaussElimination.swapCount;
+        double constant = GaussElimination.constant;
+        double det = Math.pow(-1,swapCount) / constant;
+        for (int i=0; i<m.baris; i++) {
+            det *= m.ELMT[i][i];
+        }
+        System.out.printf("Determinant = %.3f\n", det);
+    }
+}
