@@ -71,10 +71,12 @@ public class GaussElimination {
                 orderRow(m, iKol);
             }
             // mengubah elemen baris berdasar baris-iBrs (referensi)
-            for (int j = iBrs+1; j<m.baris; j++) {
-                double coeff = m.ELMT[j][iKol]/m.ELMT[iBrs][iKol];
-                for (int k=iKol; k<m.kolom; k++) {
-                    m.ELMT[j][k] -= m.ELMT[iBrs][k] * coeff;
+            if (iKol!=m.kolom-1) {
+                for (int j = iBrs+1; j<m.baris; j++) {
+                    double coeff = m.ELMT[j][iKol]/m.ELMT[iBrs][iKol];
+                    for (int k=iKol; k<m.kolom; k++) {
+                        m.ELMT[j][k] -= m.ELMT[iBrs][k] * coeff;
+                    }
                 }
             }
         }
