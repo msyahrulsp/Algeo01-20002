@@ -13,9 +13,11 @@ public class MainMenu {
                 6. Regresi Linier Berganda
                 """);
 
-        Scanner inputUser = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         System.out.print("Pilih operasi: ");
-        byte op = inputUser.nextByte();
+        byte op = input.nextByte();
+
+        input.close();
 
         switch (op) {
             case 1:
@@ -55,9 +57,9 @@ public class MainMenu {
         
         // input matriks m
         /*
-        Scanner inputUser = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         System.out.print("Pilih metode: ");
-        int opsi = inputUser.nextInt();
+        int opsi = input.nextInt();
         switch (opsi){
             case 1:
                 GaussSolution();
@@ -89,9 +91,9 @@ public class MainMenu {
 
         // input matriks m
         /*
-        Scanner inputUser = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         System.out.print("Pilih metode: ");
-        int opsi = inputUser.nextInt();
+        int opsi = input.nextInt();
         switch (opsi){
             case 1:
                 GaussDeterminant();
@@ -125,9 +127,9 @@ public class MainMenu {
 
         // input matriks m
         /*
-        Scanner inputUser = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         System.out.print("Pilih metode: ");
-        int opsi = inputUser.nextInt();
+        int opsi = input.nextInt();
         switch (opsi){
             case 1:
                 PlusMatrix();
@@ -164,9 +166,9 @@ public class MainMenu {
         // input matriks m
 
         /*
-        Scanner inputUser = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         System.out.print("Pilih metode: ");
-        int opsi = inputUser.nextInt();
+        int opsi = input.nextInt();
         switch (opsi){
             case 1:
                 GaussJordanInverse(m);

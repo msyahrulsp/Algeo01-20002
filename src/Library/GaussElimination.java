@@ -94,14 +94,4 @@ public class GaussElimination {
         }
     }
 
-//     public static void displayMatrix(Matriks m) {
-//         int i, j;
-//         for (i=0; i<m.baris; i++) {
-//             for (j=0; j<m.kolom; j++)
-//             {
-//                 System.out.print(m.ELMT[i][j] + " ");
-//             }
-//             System.out.print("\n");
-//         }
-//     }
 }

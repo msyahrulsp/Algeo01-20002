@@ -17,7 +17,7 @@ public class GaussSolution {
         else {
             double[] result = isOneSolution(m);
             System.out.println("Sistem persamaan linear ini memiliki 1 solusi unik, yaitu:");
-            displayResult(result);
+            InOut.displaySPLSolution(result);
         }
     }
 
@@ -51,11 +51,5 @@ public class GaussSolution {
             }
         }
         return result;
-    }
-
-    public static void displayResult(double[] result) {
-        for (int i=0; i<result.length; i++) {
-            System.out.printf("x%d = %.3f\n",i+1, result[i]);
-        }
     }
 }
