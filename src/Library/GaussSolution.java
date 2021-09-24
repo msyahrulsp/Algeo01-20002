@@ -5,6 +5,11 @@ package Library;
 
 public class GaussSolution {
 
+    public static void main(String[] args) {
+        Matriks m = InOut.readMatrix();
+        gaussSolution(m);
+    }
+
     public static void gaussSolution(Matriks m) {
 
         GaussElimination.gaussElimination(m);

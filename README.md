@@ -3,9 +3,11 @@
 # Kelompok "I am Geprek"
 
 ## Anggota Kelompok:
-1. 13520002 - Muhammad Fikri Ranjabi
-2. 13520066 - Putri Nurhaliza
-3. 13520161 - M Syahrul Surya Putra
+| Nama               | NIM     |
+|--------------------|---------|
+| Muhammad Fikri Ranjabi | 13520002 |
+| Putri Nurhaliza | 13520066 |
+| M Syahrul Surya Putra | 13520161 |
 
 ### Cara pakai
 Rebuild Library:
