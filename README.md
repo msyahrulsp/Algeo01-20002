@@ -1,13 +1,13 @@
 ![foto](keos.jpg)
 
-# Kelompok "I am Geprek"
+# Kelompok "I am Geprek" 
 
 ## Anggota Kelompok:
-| Nama               | NIM     |
-|--------------------|---------|
-| Muhammad Fikri Ranjabi | 13520002 |
-| Putri Nurhaliza | 13520066 |
-| M Syahrul Surya Putra | 13520161 |
+| NIM      | NAMA                   |
+|----------|------------------------|
+| 13520002 | Muhammad Fikri Ranjabi | 
+| 13520066 | Putri Nurhaliza        | 
+| 13520161 | M Syahrul Surya Putra  | 
 
 ### Cara pakai
 Rebuild Library:
