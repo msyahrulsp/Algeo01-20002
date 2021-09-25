@@ -15,7 +15,6 @@ public class InOut {
         int nBrs = input.nextInt();
         System.out.print("Masukkan jumlah kolom: ");
         int nKol = input.nextInt();
-        input.close();
 
         Matriks m = new Matriks (new double[nBrs][nKol], nBrs, nKol);
         for (int i = 0; i < nBrs; i++) {
@@ -23,6 +22,7 @@ public class InOut {
                 m.ELMT[i][j] = input.nextDouble();
             }
         }
+        input.close();
         return m;
     }
 
@@ -40,6 +40,12 @@ public class InOut {
     public static void displaySPLSolution(double[] result) {
         for (int i=0; i<result.length; i++) {
             System.out.printf("x%d = %.3f\n",i+1, result[i]);
+        }
+    }
+
+    public static void displaySPLSolution(String[] result) {
+        for (int i=0; i<result.length; i++) {
+            System.out.printf("x%d = %s\n", i+1, result[i]);
         }
     }
 

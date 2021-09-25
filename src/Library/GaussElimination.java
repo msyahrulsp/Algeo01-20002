@@ -13,14 +13,14 @@ public class GaussElimination {
 
         for (int iBrs = 0; iBrs < m.baris; iBrs++) {
             int iKol = iBrs;
-            while (allElmtKolIs0(m,iBrs,iKol) && (iKol<m.kolom-1)) {
+            while (allElmtColUnderIs0(m,iBrs,iKol) && (iKol<m.kolom-1)) {
                 iKol++;
             }
             if (m.ELMT[iBrs][iKol] == 0) {
                 orderRow(m, iKol);
             }
             // mengubah elemen baris dibawah berdasar baris-iBrs (referensi)
-            if (!((iKol==m.kolom-1) && allElmtKolIs0(m,iBrs,iKol))) {
+            if (!((iKol==m.kolom-1) && allElmtColUnderIs0(m,iBrs,iKol))) {
                 // jika sudah di kolom terakhir dan elemen kolomnya kebawah adalah 0
                 // maka tidak perlu dievaluasi lagi ntuk menghindari NaN
                 for (int j = iBrs+1; j<m.baris; j++) {
@@ -34,7 +34,7 @@ public class GaussElimination {
 
         // Membuat leading one tiap baris (jika elemen baris tidak all 0)
         for(int i=0; i<m.baris; i++) {
-            if (!allElmtBrsIs0(m, i)) {
+            if (!allElmtRowIs0(m, i)) {
                 int iLead=0;
                 while (iLead<m.kolom && m.ELMT[i][iLead]==0) {
                     iLead++;
@@ -60,7 +60,7 @@ public class GaussElimination {
         swapCount++;
     }
 
-    public static boolean allElmtKolIs0(Matriks m, int iBrs, int iKol) {
+    public static boolean allElmtColUnderIs0(Matriks m, int iBrs, int iKol) {
         // mengirimkan true jika semua elemen kolom iKol pada baris [iBrs...m.baris] adalah 0
         boolean is0 = true;
         int i=iBrs;
@@ -71,13 +71,13 @@ public class GaussElimination {
         return is0;
     }
 
-    public static boolean allElmtBrsIs0(Matriks m, int idx) {
+    public static boolean allElmtRowIs0(Matriks m, int idx) {
         // mengirimkan true jika semua elemen baris idx adalah 0
         boolean is0 = true;
-        int i=idx;
-        while (i<m.kolom && is0) {
-            is0 = m.ELMT[idx][i] == 0;
-            i++;
+        int j=0;
+        while (j<m.kolom && is0) {
+            is0 = m.ELMT[idx][j] == 0;
+            j++;
         }
         return is0;
     }
@@ -93,5 +93,4 @@ public class GaussElimination {
             i++;
         }
     }
-
 }
