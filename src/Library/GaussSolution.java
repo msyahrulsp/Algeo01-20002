@@ -1,7 +1,6 @@
 package Library;
 
 public class GaussSolution {
-
     public static void gaussSolution(Matriks m) {
         GaussElimination.gaussElimination(m);
         InOut.displayMatrix(m);
