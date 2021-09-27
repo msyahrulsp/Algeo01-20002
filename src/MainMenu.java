@@ -1,22 +1,24 @@
 import Library.*;
 import java.util.Scanner;
+// import jdk.javadoc.internal.tool.resources.javadoc;
 
 public class MainMenu {
+    
     public static void main(String[] args) {
         System.out.println("-------------KALKULATOR MATRIKS-------------");
         System.out.println("""
-                1. Mencari Solusi Persamaan Linier
-                2. Mencari Determinan
-                3. Operasi-Operasi Sederhana
+                1. Menentukan Solusi Persamaan Linier
+                2. Determinan
+                3. Transpose, Kofaktor, Adjoin 
                 4. Matriks Balikan
                 5. Interpolasi Polinom
                 6. Regresi Linier Berganda
+                7. Keluar
                 """);
 
-        Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);    
         System.out.print("Pilih operasi: ");
         byte op = input.nextByte();
-
         input.close();
 
         switch (op) {
@@ -24,10 +26,10 @@ public class MainMenu {
                 getSolution();
                 break;
             case 2:
-                getDeterminan();
+                getDeterminant();
                 break;
             case 3:
-                getOperation();
+                getTransposeCofactorAdjoint();
                 break;
             case 4:
                 getMatrixInverse();
@@ -36,7 +38,7 @@ public class MainMenu {
                 getInterpolation();
                 break;
             case 6:
-                getRegex();
+                getRegression();
                 break;
             default:
                 System.out.println("\nOperasi " + op + " tidak ditemukan\n");
@@ -48,112 +50,109 @@ public class MainMenu {
 
     public static void getSolution(){
         System.out.println("""
-
                 1. Metode eliminasi Gauss
                 2. Metode eliminasi Gauss-Jordan
                 3. Metode matriks balikan
                 4. Kaidah Crammer
                 """);
         
-        // input matriks m
-        /*
-        Scanner input = new Scanner(System.in);
+        Scanner inputSPL = new Scanner(System.in);
         System.out.print("Pilih metode: ");
-        int opsi = input.nextInt();
+        int opsi = inputSPL.nextInt();
+        inputSPL.close();
+        System.out.println("Input matriks: ");
+        Matriks m = InOut.readMatrix();
+
         switch (opsi){
             case 1:
-                GaussSolution();
+                GaussSolution.gaussSolution(m);
                 break;
-            case 2:
-                GaussJordanSolution();
-                break;
-            case 3:
-                InverseSolution();
-                break;
-            case 4:
-                CrammerSolution();
-                break;
+            // case 2:
+            //     gaussJordanSolution(m);
+            //     break;
+            // case 3:
+            //     inverseSolution(m);
+            //     break;
+            // case 4:
+            //     crammerSolution(m);
+            //     break;
             default:
                 System.out.println("\nOperasi " + opsi + " tidak ditemukan\n");
                 break;
        }
-       */
     }
 
-    public static void getDeterminan() {
+    public static void getDeterminant() {
         System.out.println("""
 
-                1. Metode eliminasi Gauss
-                2. Metode eliminasi Gauss-Jordan
-                3. Metode matriks balikan
+                1. Metode Eliminasi Gauss
+                2. Metode Eliminasi Gauss-Jordan
+                3. Metode Matriks balikan
                 4. Kaidah Crammer
+                5. Metode Kofaktor
                 """);
 
-        // input matriks m
-        /*
-        Scanner input = new Scanner(System.in);
+        
+        Scanner inputDet = new Scanner(System.in);
         System.out.print("Pilih metode: ");
-        int opsi = input.nextInt();
+        int opsi = inputDet.nextInt();
+        inputDet.close();
+        System.out.println("Input matriks: ");
+        Matriks m = InOut.readSquareMatrix();
+
         switch (opsi){
             case 1:
-                GaussDeterminant();
+                GaussDeterminant.gaussDeterminant(m);
                 break;
-            case 2:
-                GaussJordanDeterminant();
-                break;
-            case 3:
-                InverseDeterminant();
-                break;
-            case 4:
-                CrammerDeterminant());
-                break;
+            // case 2:
+            //     GaussJordanDeterminant();
+            //     break;
+            // case 3:
+            //     InverseDeterminant();
+            //     break;
+            // case 4:
+            //     CrammerDeterminant());
+            //     break;
+            case 5:
+                CofactorDeterminant.getDeterminant(m);
             default:
                 System.out.println("\nOperasi " + opsi + " tidak ditemukan\n");
                 break;
         }
-        */
+
     }
 
-    public static void getOperation() {
+    public static void getTransposeCofactorAdjoint() {
         System.out.println("""
 
-                1. Penjumlahan Matriks
-                2. Pengurangan Matriks
-                3. Perkalian Matriks
-                4. Mencari Transpose
-                5. Mencari Adjoin
-                6. Mencari Kofaktor
+                1. Transpose Matriks
+                2. Matriks Kofaktor
+                3. Adjoint Matriks
                 """);
 
-        // input matriks m
-        /*
-        Scanner input = new Scanner(System.in);
+        Scanner inputTCA = new Scanner(System.in);
         System.out.print("Pilih metode: ");
-        int opsi = input.nextInt();
+        byte opsi = inputTCA.nextByte();
+        inputTCA.close();
+        System.out.println("Input matriks: ");
+        Matriks m = InOut.readSquareMatrix();
+
         switch (opsi){
             case 1:
-                PlusMatrix();
+                TransposeCofactorAdjoint.getTranspose(m);
                 break;
             case 2:
-                MinusMatrix();
+                TransposeCofactorAdjoint.getCofactor(m);
                 break;
             case 3:
-                MultiplyMatrix();
+                TransposeCofactorAdjoint.getAdjoint(m);
                 break;
-            case 4:
-                getTranspose();
-                break;
-            case 5:
-                getAdjoint();
-                break;
-            case 6:
-                getCofactor();
-                break;
+            
             default:
                 System.out.println("\nOperasi " + opsi + " tidak ditemukan\n");
                 break;
         }
-        */
+        InOut.displayMatrix(m);
     }
 
     public static void getMatrixInverse(){
@@ -163,12 +162,16 @@ public class MainMenu {
                 2. Metode Adjoin
                 """);
 
-        // input matriks m
 
         /*
         Scanner input = new Scanner(System.in);
         System.out.print("Pilih metode: ");
         int opsi = input.nextInt();
+        System.out.println("Input matriks: ");
+        Matriks m = InOut.readSquareMatrix();
+        
+        input.close();
+
         switch (opsi){
             case 1:
                 GaussJordanInverse(m);
@@ -180,6 +183,8 @@ public class MainMenu {
                 System.out.println("\nOperasi " + opsi + " tidak ditemukan\n");
                 break;
         }
+
+        InOut.displayMatrix(m);
         */
     }
 
@@ -187,7 +192,7 @@ public class MainMenu {
         //langsung manggil fungsi ??
     }
 
-    public static void getRegex() {
+    public static void getRegression() {
         //langsung manggil fungsi ??
     }
 

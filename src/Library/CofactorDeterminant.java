@@ -20,7 +20,7 @@ public class CofactorDeterminant {
     }
     public static Matriks getMinor(Matriks m, int x, int y) {
         int N = m.baris;
-        Matriks mMinor = new Matriks(new double[N-1][N-1], N-1, N-1);
+        Matriks mMinor = new Matriks(N-1, N-1);
         int minorBrs, minorKol;
 
         minorBrs = 0;

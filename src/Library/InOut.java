@@ -16,9 +16,24 @@ public class InOut {
         System.out.print("Masukkan jumlah kolom: ");
         int nKol = input.nextInt();
 
-        Matriks m = new Matriks (new double[nBrs][nKol], nBrs, nKol);
+        Matriks m = new Matriks (nBrs, nKol);
         for (int i = 0; i < nBrs; i++) {
             for (int j = 0; j < nKol; j++) {
+                m.ELMT[i][j] = input.nextDouble();
+            }
+        }
+        input.close();
+        return m;
+    }
+
+    public static Matriks readSquareMatrix() {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Masukkan ukuran matriks: ");
+        int N = input.nextInt();
+
+        Matriks m = new Matriks (N, N);
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
                 m.ELMT[i][j] = input.nextDouble();
             }
         }
