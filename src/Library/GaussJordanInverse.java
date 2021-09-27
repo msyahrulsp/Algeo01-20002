@@ -57,14 +57,14 @@ public class GaussJordanInverse {
     public static boolean findLeading(Matriks m, int iBrs)
     {
         int i=0;
-        int idxLead=0;
+        // int idxLead=0;
         boolean isLead=true;
         while (i<m.kolom && isLead)
         {
             if (m.ELMT[iBrs][i] == 1)
             {
                 isLead = false;
-                idxLead = i;
+                // idxLead = i;
             }
             i ++;
         }
@@ -158,7 +158,7 @@ public class GaussJordanInverse {
     {
 //        m.baris = 2 * m.baris;
 //        m.kolom = 2 * m.kolom;
-        Matriks n = new Matriks(new double[m.baris][m.kolom], m.baris, 2 * m.kolom);
+        Matriks n = new Matriks(m.baris, 2 * m.kolom);
 
         for (int rows = 0; rows < m.baris; rows++)
         {
@@ -177,7 +177,7 @@ public class GaussJordanInverse {
         }
         displayMatrix(n);
         gaussJordanElimination(n);
-        Matriks o = new Matriks(new double[m.baris][m.kolom], m.baris, 2 * m.kolom);
+        Matriks o = new Matriks(m.baris, 2 * m.kolom);
 
         for (int rows = 0; rows < m.baris; rows++)
         {
