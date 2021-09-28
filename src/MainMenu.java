@@ -175,7 +175,7 @@ public class MainMenu {
     }
 
     public static void getInterpolation() {
-        // langsung manggil fungsi ??
+        InterpolasiPolinom.polinomSolution();
     }
 
     public static void getRegression() {
