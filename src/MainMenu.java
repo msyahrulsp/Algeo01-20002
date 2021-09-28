@@ -54,9 +54,10 @@ public class MainMenu {
             case 1:
                 GaussSolution.gaussSolution(m);
                 break;
-            // case 2:
-            //     gaussJordanSolution(m);
-            //     break;
+            case 2:
+                GaussJordanElimination.gaussJordanElimination(m);
+                GaussSolution.gaussSolution(m);
+                break;
             // case 3:
             //     inverseSolution(m);
             //     break;
