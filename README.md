@@ -1,5 +1,3 @@
-![foto](keos.jpg)
-
 # Kelompok "I am Geprek" 
 
 ## Anggota Kelompok:
