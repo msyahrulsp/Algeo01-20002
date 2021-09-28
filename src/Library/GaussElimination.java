@@ -1,5 +1,7 @@
 package Library;
 
+import matriks.Matriks;
+
 // Prekondisi : Matriks m dengan m.baris <= m.kolom
 // OUTPUT : Matriks Eselon Baris
 public class GaussElimination {

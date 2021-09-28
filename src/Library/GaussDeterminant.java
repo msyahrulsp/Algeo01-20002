@@ -1,5 +1,7 @@
 package Library;
+
 import static Library.GaussElimination.*;
+import matriks.Matriks;
 
 public class GaussDeterminant {
 

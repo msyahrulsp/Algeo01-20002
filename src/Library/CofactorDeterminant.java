@@ -1,5 +1,7 @@
 package Library;
 
+import matriks.Matriks;
+
 public class CofactorDeterminant {
     public static double getDeterminant(Matriks m) {
         int N = m.baris;

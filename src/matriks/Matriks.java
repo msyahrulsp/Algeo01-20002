@@ -9,13 +9,13 @@ public class Matriks {
     public double[][] ELMT;
 
     // Konstruktor
-    public Matriks () {
-        this.baris = 1;
-        this.kolom = 1;
+    // public Matriks() {
+    //     this.baris = 1;
+    //     this.kolom = 1;
 
-        this.ELMT = new double[1][1];
-        this.ELMT[0][0] = 1;
-    }
+    //     this.ELMT = new double[1][1];
+    //     this.ELMT[0][0] = 1;
+    // }
 
     public Matriks(int baris, int kolom) {
         this.ELMT = new double[baris][kolom];
@@ -33,36 +33,36 @@ public class Matriks {
         }
     }
 
-    public Matriks readSquareMatriks() {
+    public static Matriks readSquareMatriks() {
         Scanner input = new Scanner(System.in);
         System.out.print("Masukkan ukuran matriks: ");
         int N = input.nextInt();
-        this.baris = N;
-        this.kolom = N;
 
+        Matriks m = new Matriks(N, N);
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
-                this.ELMT[i][j] = input.nextDouble();
+                m.ELMT[i][j] = input.nextDouble();
             }
         }
-        input.close();
-        return this;
+        // input.close();
+        return m;
     }
 
-    public Matriks keyboardInput() {
+    public static Matriks keyboardInput() {
         Scanner input = new Scanner(System.in);
         System.out.print("Masukkan jumlah baris: ");
-        this.baris = input.nextInt();
+        int baris = input.nextInt();
         System.out.print("Masukkan jumlah kolom: ");
-        this.kolom = input.nextInt();
+        int kolom = input.nextInt();
         
-        for (int i = 0; i < this.baris; i++) {
-            for (int j = 0; j < this.kolom; j++) {
-                this.ELMT[i][j] = input.nextDouble();
+        Matriks m = new Matriks(baris, kolom);
+        for (int i = 0; i < baris; i++) {
+            for (int j = 0; j < kolom; j++) {
+                m.ELMT[i][j] = input.nextDouble();
             }
         }
-        input.close();
-        return this;
+        // input.close();
+        return m;
     }
 
     public Matriks fileInput(String fileName) {

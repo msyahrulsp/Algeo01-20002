@@ -1,5 +1,7 @@
 package Library;
 
+import matriks.Matriks;
+
 public class GaussJordanInverse {
     public static void displayMatrix(Matriks m) {
         int i, j;

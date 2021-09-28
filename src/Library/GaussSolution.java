@@ -1,23 +1,23 @@
 package Library;
 import static Library.GaussElimination.*;
-import static Library.InOut.*;
+import matriks.Matriks;
 
 public class GaussSolution {
     public static void gaussSolution(Matriks m) {
         gaussElimination(m);
-        displayMatrix(m);
+        m.displayMatriks();
         if (isNoSolution(m)) {
             System.out.println("Sistem persamaan linear ini tidak memiliki solusi");
         }
         else if (isInfinitySolutions(m)) {
             System.out.println("Sistem persamaan linear ini memiliki banyak solusi, dengan: ");
             String[] result = parametricSolutions(m);
-            displaySPLSolution(result);
+            Matriks.displaySPLSolution(result);
         }
         else {
             double[] result = isOneSolution(m);
             System.out.println("Sistem persamaan linear ini memiliki 1 solusi unik, yaitu:");
-            displaySPLSolution(result);
+            Matriks.displaySPLSolution(result);
         }
     }
 

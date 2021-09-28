@@ -3,6 +3,7 @@ package Library;
 import java.util.Scanner;
 import static Library.GaussSolution.*;
 import static Library.GaussElimination.*;
+import matriks.Matriks;
 
 public class InterpolasiPolinom {
 
