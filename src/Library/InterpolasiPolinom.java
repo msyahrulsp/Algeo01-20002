@@ -18,7 +18,7 @@ public class InterpolasiPolinom {
         System.out.println("Masukkan jumlah n: ");
         int n = input.nextInt();
 
-        Matriks m = new Matriks (new double[n][2], n, 2);
+        Matriks m = new Matriks (n, 2);
         System.out.println("Masukkan pasangan titik-titik: ");
         for (i=0;i<n;i++)
         {
