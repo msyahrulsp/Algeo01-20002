@@ -1,6 +1,6 @@
 //import Library.Matriks;
 
-import Library.Matriks;
+import matriks.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,7 +9,7 @@ public class Main {
         // Matriks TestMatriks = new Matriks(10,10);
         // System.out.println("nBaris nKolom: " + TestMatriks.baris + TestMatriks.kolom);
         Matriks A = new Matriks();
-        A.fileInput("1a.txt");
+        A.fileInput("1d6.txt");
         A.displayMatriks();
     }
 }
