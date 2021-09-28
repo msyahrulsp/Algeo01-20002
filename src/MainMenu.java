@@ -1,6 +1,7 @@
 import Library.*;
 
 import java.util.Scanner;
+import matriks.Matriks;
 
 
 public class MainMenu {
@@ -48,7 +49,8 @@ public class MainMenu {
         System.out.print("Pilih metode: ");
         byte opsi = input.nextByte();
         System.out.println("Input matriks: ");
-        Matriks m = InOut.readMatrix();
+        Matriks m = new Matriks();
+        m.keyboardInput();
 
         switch (opsi){
             case 1:
@@ -85,13 +87,14 @@ public class MainMenu {
         byte opsi = input.nextByte();        
 
         System.out.println("Input matriks: ");
-        Matriks m = InOut.readSquareMatrix();
+        Matriks m = new Matriks();
+        m.readSquareMatriks();
         double det;
 
         switch (opsi){
             case 1:
                 det = GaussDeterminant.gaussDeterminant(m);
-                InOut.displayDeterminant(det);
+                Matriks.displayDeterminant(det);
                 break;
             // case 2:
             //     GaussJordanDeterminant();
@@ -104,7 +107,7 @@ public class MainMenu {
             //     break;
             case 5:
                 det = CofactorDeterminant.getDeterminant(m);
-                InOut.displayDeterminant(det);
+                Matriks.displayDeterminant(det);
                 break;
             default:
                 System.out.println("\nMetode " + opsi + " tidak ditemukan\n");
@@ -124,23 +127,23 @@ public class MainMenu {
         System.out.print("Pilih metode: ");
         byte opsi = input.nextByte();
         System.out.println("Input matriks: ");
-        Matriks m;
+        Matriks m = new Matriks();
 
         switch (opsi){
             case 1:
-                m = InOut.readMatrix();
+                m.keyboardInput();
                 m = TransposeCofactorAdjoint.getTranspose(m);
-                InOut.displayMatrix(m);
+                m.displayMatriks();
                 break;
             case 2:
-                m = InOut.readSquareMatrix();
+                m.readSquareMatriks();
                 m = TransposeCofactorAdjoint.getCofactor(m);
-                InOut.displayMatrix(m);
+                m.displayMatriks();
                 break;
             case 3:
-                m = InOut.readSquareMatrix();
+                m.readSquareMatriks();
                 m = TransposeCofactorAdjoint.getAdjoint(m);
-                InOut.displayMatrix(m);
+                m.displayMatriks();
                 break;
             
             default:
@@ -159,7 +162,8 @@ public class MainMenu {
         System.out.print("Pilih metode: ");
         byte opsi = input.nextByte();
         System.out.println("Input matriks: ");
-        Matriks m = InOut.readSquareMatrix();
+        Matriks m = new Matriks();
+        m.readSquareMatriks();
 
         switch (opsi){
             case 1:

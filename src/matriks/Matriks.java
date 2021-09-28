@@ -9,7 +9,7 @@ public class Matriks {
     public double[][] ELMT;
 
     // Konstruktor
-    public Matriks () {
+    public Matriks() {
         this.baris = 1;
         this.kolom = 1;
 
@@ -45,7 +45,7 @@ public class Matriks {
                 this.ELMT[i][j] = input.nextDouble();
             }
         }
-        input.close();
+        // input.close();
         return this;
     }
 
@@ -61,7 +61,7 @@ public class Matriks {
                 this.ELMT[i][j] = input.nextDouble();
             }
         }
-        input.close();
+        // input.close();
         return this;
     }
 

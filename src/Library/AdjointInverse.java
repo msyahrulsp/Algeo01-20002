@@ -1,6 +1,8 @@
 package Library;
+
 import static Library.CofactorDeterminant.*;
-import static Library.InOut.*;
+import matriks.Matriks;
+
 public class AdjointInverse {
     public static void getInverse(Matriks m) {
         double det = getDeterminant(m);
@@ -10,7 +12,7 @@ public class AdjointInverse {
         else {
             Matriks mk = multiplyMatrix(m, 1/det);
             System.out.println("Inverse Matriks: ");
-            displayMatrix(mk);
+            mk.displayMatriks();
         }
     }
 

@@ -1,7 +1,6 @@
 package Library;
 import static Library.CofactorDeterminant.*;
-
-
+import matriks.Matriks;
 
 public class TransposeCofactorAdjoint {
     public static Matriks getTranspose(Matriks m) {

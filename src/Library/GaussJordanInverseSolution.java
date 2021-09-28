@@ -1,5 +1,7 @@
 package Library;
 
+import matriks.Matriks;
+
 public class GaussJordanInverseSolution {
     public static void jordanInverseSolution(Matriks m) {
         GaussJordanInverse.makeInverse(m);
@@ -8,7 +10,7 @@ public class GaussJordanInverseSolution {
             System.out.println("Matriks tidak memiliki inverse. (Determinan = 0)");
         } else {
             System.out.println("Inverse Matriks: ");
-            InOut.displayMatrix(m);
+            m.displayMatriks();
         }
     }
     
