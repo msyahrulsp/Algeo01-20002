@@ -64,8 +64,8 @@ public class InOut {
         }
     }
 
-    public static void displayDeterminant(double[] det) {
-        System.out.printf("Determinan = %.3f", det);
+    public static void displayDeterminant(double det) {
+        System.out.printf("Determinan = %.3f\n", det);
     }
 
 }

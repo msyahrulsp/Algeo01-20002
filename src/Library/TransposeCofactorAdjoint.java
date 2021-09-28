@@ -2,10 +2,9 @@ package Library;
 
 public class TransposeCofactorAdjoint {
     public static Matriks getTranspose(Matriks m) {
-        int N = m.baris;
-        Matriks mTranspose = new Matriks(N, N);
-        for (int i=0; i<N; i++) {
-            for (int j=0; j<N; j++) {
+        Matriks mTranspose = new Matriks(m.kolom, m.baris);
+        for (int i=0; i<mTranspose.baris; i++) {
+            for (int j=0; j<mTranspose.kolom; j++) {
                 mTranspose.ELMT[i][j] = m.ELMT[j][i];
             }
         }

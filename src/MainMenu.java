@@ -1,50 +1,39 @@
 import Library.*;
+
 import java.util.Scanner;
-// import jdk.javadoc.internal.tool.resources.javadoc;
+
 
 public class MainMenu {
     
+    public static Scanner input = new Scanner(System.in);
+
     public static void main(String[] args) {
-        System.out.println("-------------KALKULATOR MATRIKS-------------");
-        System.out.println("""
-                1. Menentukan Solusi Persamaan Linier
-                2. Determinan
-                3. Transpose, Kofaktor, Adjoin 
-                4. Matriks Balikan
-                5. Interpolasi Polinom
-                6. Regresi Linier Berganda
-                7. Keluar
-                """);
+        byte op;
+        do {
+            System.out.println("\n-------------KALKULATOR MATRIKS-------------");
+            System.out.println("""
+                    1. Menentukan Solusi Persamaan Linier
+                    2. Determinan
+                    3. Transpose, Kofaktor, Adjoin 
+                    4. Matriks Balikan
+                    5. Interpolasi Polinom
+                    6. Regresi Linier Berganda
+                    7. Keluar
+                    """);
+            System.out.print("Pilih operasi: ");
+            op = input.nextByte();
 
-        Scanner input = new Scanner(System.in);    
-        System.out.print("Pilih operasi: ");
-        byte op = input.nextByte();
-        input.close();
-
-        switch (op) {
-            case 1:
-                getSolution();
-                break;
-            case 2:
-                getDeterminant();
-                break;
-            case 3:
-                getTransposeCofactorAdjoint();
-                break;
-            case 4:
-                getMatrixInverse();
-                break;
-            case 5:
-                getInterpolation();
-                break;
-            case 6:
-                getRegression();
-                break;
-            default:
-                System.out.println("\nOperasi " + op + " tidak ditemukan\n");
-                break;
-
-        }
+            if (op == 1) {getSolution();}
+            else if (op == 2) {getDeterminant();}
+            else if (op == 3) {getTransposeCofactorAdjoint();}
+            else if (op == 4) {getMatrixInverse();}
+            else if (op == 5) {getInterpolation();}
+            else if (op == 6) {getRegression();}
+            else if (op == 7) {
+                System.out.println("\n----------------------------------------");
+            }
+            else {System.out.println("\nOperasi " + op + " tidak ditemukan\n");}
+        } while (op != 7);
 
     }
 
@@ -56,10 +45,8 @@ public class MainMenu {
                 4. Kaidah Crammer
                 """);
         
-        Scanner inputSPL = new Scanner(System.in);
         System.out.print("Pilih metode: ");
-        int opsi = inputSPL.nextInt();
-        inputSPL.close();
+        byte opsi = input.nextByte();
         System.out.println("Input matriks: ");
         Matriks m = InOut.readMatrix();
 
@@ -77,7 +64,7 @@ public class MainMenu {
             //     crammerSolution(m);
             //     break;
             default:
-                System.out.println("\nOperasi " + opsi + " tidak ditemukan\n");
+                System.out.println("\nMetode " + opsi + " tidak ditemukan\n");
                 break;
        }
     }
@@ -93,16 +80,17 @@ public class MainMenu {
                 """);
 
         
-        Scanner inputDet = new Scanner(System.in);
         System.out.print("Pilih metode: ");
-        int opsi = inputDet.nextInt();
-        inputDet.close();
+        byte opsi = input.nextByte();        
+
         System.out.println("Input matriks: ");
         Matriks m = InOut.readSquareMatrix();
+        double det;
 
         switch (opsi){
             case 1:
-                GaussDeterminant.gaussDeterminant(m);
+                det = GaussDeterminant.gaussDeterminant(m);
+                InOut.displayDeterminant(det);
                 break;
             // case 2:
             //     GaussJordanDeterminant();
@@ -114,9 +102,11 @@ public class MainMenu {
             //     CrammerDeterminant());
             //     break;
             case 5:
-                CofactorDeterminant.getDeterminant(m);
+                det = CofactorDeterminant.getDeterminant(m);
+                InOut.displayDeterminant(det);
+                break;
             default:
-                System.out.println("\nOperasi " + opsi + " tidak ditemukan\n");
+                System.out.println("\nMetode " + opsi + " tidak ditemukan\n");
                 break;
         }
 
@@ -130,29 +120,32 @@ public class MainMenu {
                 3. Adjoint Matriks
                 """);
 
-        Scanner inputTCA = new Scanner(System.in);
         System.out.print("Pilih metode: ");
-        byte opsi = inputTCA.nextByte();
-        inputTCA.close();
+        byte opsi = input.nextByte();
         System.out.println("Input matriks: ");
-        Matriks m = InOut.readSquareMatrix();
+        Matriks m;
 
         switch (opsi){
             case 1:
-                TransposeCofactorAdjoint.getTranspose(m);
+                m = InOut.readMatrix();
+                m = TransposeCofactorAdjoint.getTranspose(m);
+                InOut.displayMatrix(m);
                 break;
             case 2:
-                TransposeCofactorAdjoint.getCofactor(m);
+                m = InOut.readSquareMatrix();
+                m = TransposeCofactorAdjoint.getCofactor(m);
+                InOut.displayMatrix(m);
                 break;
             case 3:
-                TransposeCofactorAdjoint.getAdjoint(m);
+                m = InOut.readSquareMatrix();
+                m = TransposeCofactorAdjoint.getAdjoint(m);
+                InOut.displayMatrix(m);
                 break;
             
             default:
                 System.out.println("\nOperasi " + opsi + " tidak ditemukan\n");
                 break;
         }
-        InOut.displayMatrix(m);
     }
 
     public static void getMatrixInverse(){
@@ -162,38 +155,31 @@ public class MainMenu {
                 2. Metode Adjoin
                 """);
 
-
-        /*
-        Scanner input = new Scanner(System.in);
         System.out.print("Pilih metode: ");
-        int opsi = input.nextInt();
+        byte opsi = input.nextByte();
         System.out.println("Input matriks: ");
         Matriks m = InOut.readSquareMatrix();
-        
-        input.close();
 
         switch (opsi){
             case 1:
-                GaussJordanInverse(m);
+                GaussJordanInverseSolution.jordanInverseSolution(m);
                 break;
             case 2:
-                AdjoinInverse(m);
+                AdjointInverse.getInverse(m);
                 break;
             default:
-                System.out.println("\nOperasi " + opsi + " tidak ditemukan\n");
+                System.out.println("\nMetode " + opsi + " tidak ditemukan\n");
                 break;
         }
 
-        InOut.displayMatrix(m);
-        */
     }
 
     public static void getInterpolation() {
-        //langsung manggil fungsi ??
+        // langsung manggil fungsi ??
     }
 
     public static void getRegression() {
-        //langsung manggil fungsi ??
+        // langsung manggil fungsi ??
     }
 
 
