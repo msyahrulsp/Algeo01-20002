@@ -1,16 +1,16 @@
 package Library;
-
-
+import static Library.CofactorDeterminant.*;
+import static Library.InOut.*;
 public class AdjointInverse {
     public static void getInverse(Matriks m) {
-        double det = CofactorDeterminant.getDeterminant(m);
+        double det = getDeterminant(m);
         if (det == 0) {
             System.out.println("Matriks tidak memiliki inverse. (Determinan = 0)");
         }
         else {
             Matriks mk = multiplyMatrix(m, 1/det);
             System.out.println("Inverse Matriks: ");
-            InOut.displayMatrix(mk);
+            displayMatrix(mk);
         }
     }
 

@@ -1,21 +1,23 @@
 package Library;
+import static Library.GaussElimination.*;
+import static Library.InOut.*;
 
 public class GaussSolution {
     public static void gaussSolution(Matriks m) {
-        GaussElimination.gaussElimination(m);
-        InOut.displayMatrix(m);
+        gaussElimination(m);
+        displayMatrix(m);
         if (isNoSolution(m)) {
             System.out.println("Sistem persamaan linear ini tidak memiliki solusi");
         }
         else if (isInfinitySolutions(m)) {
             System.out.println("Sistem persamaan linear ini memiliki banyak solusi, dengan: ");
             String[] result = parametricSolutions(m);
-            InOut.displaySPLSolution(result);
+            displaySPLSolution(result);
         }
         else {
             double[] result = isOneSolution(m);
             System.out.println("Sistem persamaan linear ini memiliki 1 solusi unik, yaitu:");
-            InOut.displaySPLSolution(result);
+            displaySPLSolution(result);
         }
     }
 
@@ -36,7 +38,7 @@ public class GaussSolution {
     }
 
     public static boolean isInfinitySolutions(Matriks m) {
-        return GaussElimination.allElmtRowIs0(m, m.baris-1) || (m.baris<m.kolom-1);
+        return allElmtRowIs0(m, m.baris-1) || (m.baris<m.kolom-1);
     }
 
     public static double[] isOneSolution(Matriks m) {
@@ -65,7 +67,7 @@ public class GaussSolution {
             boolean eResValid = false;      // true jika sudah ditemukan nilai result[iRes]
             int i=m.baris-1;
             while (i>=0 && !eResValid) {
-                if (GaussElimination.allElmtRowIs0(m, i) && (i!=0)) {
+                if (allElmtRowIs0(m, i) && (i!=0)) {
                     i--;
                 }
                 else {

@@ -95,7 +95,7 @@ public class GaussJordanElimination {
                 iKol++;
             }
             if (m.ELMT[iBrs][iKol] == 0) {
-                orderRow(m, iKol);
+                orderRow(m, iBrs, iKol);
             }
             // mengubah elemen baris dibawah berdasar baris-iBrs (referensi)
             if (!((iKol==m.kolom-1) && allElmtColUnderIs0(m,iBrs,iKol))) {

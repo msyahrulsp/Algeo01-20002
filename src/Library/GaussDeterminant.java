@@ -1,9 +1,10 @@
 package Library;
+import static Library.GaussElimination.*;
 
 public class GaussDeterminant {
 
     public static double gaussDeterminant(Matriks m) {
-        GaussElimination.gaussElimination(m);
+        gaussElimination(m);
         int swapCount = GaussElimination.swapCount;
         double constant = GaussElimination.constant;
         double det = Math.pow(-1,swapCount) / constant;

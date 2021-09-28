@@ -17,7 +17,7 @@ public class GaussElimination {
                 iKol++;
             }
             if (m.ELMT[iBrs][iKol] == 0) {
-                orderRow(m, iKol);
+                orderRow(m, iBrs, iKol);
             }
             // mengubah elemen baris dibawah berdasar baris-iBrs (referensi)
             if (!((iKol==m.kolom-1) && allElmtColUnderIs0(m,iBrs,iKol))) {
@@ -82,12 +82,12 @@ public class GaussElimination {
         return is0;
     }
 
-    public static void orderRow(Matriks m, int idx) {
+    public static void orderRow(Matriks m, int iBrs, int iKol) {
         // menukar baris idx jika m[idx][idx]=0 dengan baris lain dibawahnya yang elemennya tidak 0
-        int i=idx+1;
+        int i=iBrs+1;
         while (i<m.baris) {
-            if (m.ELMT[i][idx]!=0) {
-                swapRow(m, i, idx);
+            if (m.ELMT[i][iKol]!=0) {
+                swapRow(m, iBrs, i);
                 break;
             }
             i++;

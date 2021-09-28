@@ -1,4 +1,7 @@
 package Library;
+import static Library.CofactorDeterminant.*;
+
+
 
 public class TransposeCofactorAdjoint {
     public static Matriks getTranspose(Matriks m) {
@@ -16,7 +19,7 @@ public class TransposeCofactorAdjoint {
         Matriks mCofactor = new Matriks(N, N);
         for (int i=0; i<N; i++) {
             for (int j=0; j<N; j++) {
-                double detMinor = CofactorDeterminant.getDeterminant(CofactorDeterminant.getMinor(m, i, j));
+                double detMinor = getDeterminant(getMinor(m, i, j));
                 mCofactor.ELMT[i][j] = Math.pow(-1, (i+j))*detMinor;
             }
         }
