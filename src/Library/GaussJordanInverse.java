@@ -175,8 +175,9 @@ public class GaussJordanInverse {
 //            }
             n.ELMT[rows][n.baris+rows] = 1;
         }
-        displayMatrix(n);
-        gaussJordanElimination(n);
+        // displayMatrix(n);
+        GaussJordanElimination.gaussJordanElimination(n);
+        // displayMatrix(n);
         Matriks o = new Matriks(m.baris, 2 * m.kolom);
 
         for (int rows = 0; rows < m.baris; rows++)
@@ -186,6 +187,8 @@ public class GaussJordanInverse {
                 o.ELMT[rows][cols] = n.ELMT[rows][cols+m.kolom];
             }
         }
+        o.kolom = o.kolom/2;
+        // displayMatrix(o);
 
 
 //                n.ELMT[1][3]
