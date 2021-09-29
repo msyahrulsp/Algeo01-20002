@@ -5,18 +5,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class Matriks {
-    public int baris = 0, kolom = 0;
+    public int baris, kolom;
     public double[][] ELMT;
 
     // Konstruktor
-    // public Matriks() {
-    //     this.baris = 1;
-    //     this.kolom = 1;
-
-    //     this.ELMT = new double[1][1];
-    //     this.ELMT[0][0] = 1;
-    // }
-
     public Matriks(int baris, int kolom) {
         this.ELMT = new double[baris][kolom];
         this.baris = baris;
@@ -31,6 +23,24 @@ public class Matriks {
             }
             if (i < this.baris) System.out.print("\n");
         }
+    }
+
+    public static Matriks copyMatriks(Matriks m, int baris, int kolom) {
+        Matriks res = new Matriks(baris, kolom);
+        for (int i = 0; i < baris; i++) {
+            for (int j = 0; j < kolom; j++) {
+                res.ELMT[i][j] = m.ELMT[i][j];
+            }
+        }
+        return res;
+    }
+
+    public static Matriks getMSolution(Matriks m) {
+        Matriks res = new Matriks(m.baris, 1);
+        for (int i = 0; i < m.baris; i++) {
+            res.ELMT[i][0] = m.ELMT[i][m.kolom - 1];
+        }
+        return res;
     }
 
     public static Matriks readSquareMatriks() {

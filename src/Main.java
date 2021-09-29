@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 import Library.*;
 import matriks.Matriks;
 
@@ -59,9 +58,15 @@ public class Main {
                 GaussJordanElimination.gaussJordanElimination(m);
                 GaussSolution.gaussSolution(m);
                 break;
-            // case 3:
-            //     inverseSolution(m);
-            //     break;
+            case 3:
+                Matriks mInverse = AdjointInverse.getResult(Matriks.copyMatriks(m, m.baris, m.kolom - 1));
+                if (mInverse.baris == 0) {
+                    System.out.println("Matriks tidak memiliki inverse\n");
+                } else {
+                    Matriks mB = Matriks.getMSolution(m);
+                    InverseSolution.getISolution(mInverse, mB);
+                }
+                break;
             // case 4:
             //     crammerSolution(m);
             //     break;
