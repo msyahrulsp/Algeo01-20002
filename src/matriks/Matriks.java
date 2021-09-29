@@ -106,7 +106,15 @@ public class Matriks {
             this.ELMT = new double[this.baris][this.kolom];
             for (int i = 0; i < this.baris; i++) {
                 for (int j = 0; j < this.kolom; j++) {
-                    this.ELMT[i][j] = scanner2.nextDouble();
+                    String temp = scanner2.next();
+                    String[] sNum = temp.split("/");
+                    double[] num = new double[sNum.length];
+                    num[0] = Double.parseDouble(sNum[0]);
+                    if (sNum.length == 2) {
+                        num[1] = Double.parseDouble(sNum[1]);
+                        num[0] = num[0] / num[1];
+                    }
+                    this.ELMT[i][j] = num[0];
                 }
             }
             scanner2.close();
