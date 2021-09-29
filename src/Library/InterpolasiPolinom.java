@@ -71,7 +71,7 @@ public class InterpolasiPolinom {
         
         double taksirResult = 0;
         Matriks o = makePolinom();
-        gaussElimination(o);
+        jordanranjabi.gaussJordanElimination(o);
         double x = readX();
         double[] result = isOneSolution(o);
         

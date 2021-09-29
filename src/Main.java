@@ -56,8 +56,8 @@ public class Main {
                 GaussSolution.gaussSolution(m);
                 break;
             case 2:
-                GaussJordanElimination.gaussJordanElimination(m);
-                GaussSolution.gaussSolution(m);
+                jordanranjabi.gaussJordanElimination(m);
+                GaussJordanSolution.gaussSolution(m);
                 break;
             case 3:
                 Matriks mInverse = AdjointInverse.getResult(Matriks.copyMatriks(m, m.baris, m.kolom - 1));
