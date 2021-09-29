@@ -56,7 +56,7 @@ public class Main {
                 GaussSolution.gaussSolution(m);
                 break;
             case 2:
-                jordanranjabi.gaussJordanElimination(m);
+                GaussJordanElimination.gaussJordanElimination(m);
                 GaussJordanSolution.gaussSolution(m);
                 break;
             case 3:
