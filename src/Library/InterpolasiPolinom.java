@@ -76,20 +76,22 @@ public class InterpolasiPolinom {
         double[] result = isOneSolution(o);
         
 
-        displaySPLSolution(result);
+        // displaySPLSolution(result);
         
         // gaussSolution(makePolinom());
-        System.out.print("Penyelesaian sistem persamaan dengan metode eliminasi Gauss menghasilkan ");
-        for (int i=0;i<result.length-1;i++) {
-            System.out.format("a%d = %f, ", i, result[i]);
-        }
-        System.out.format("a%d = %f, ", result.length-1, result[result.length-1]);
+        System.out.print("Penyelesaian sistem persamaan dengan metode eliminasi Gauss menghasilkan: ");
         System.out.println("");
-        System.out.format("Polinom interpolasi yang melalui ketiga buah titik tersebut adalah p%d(x) =", result.length-1);
         for (int i=0;i<result.length-1;i++) {
-            System.out.format(" %fx^%d +", result[i], i);
+            System.out.format("a%d = %.4E, ", i, result[i]);
         }
-        System.out.format(" %f^%d", result[result.length-1], result.length-1);
+        System.out.format("a%d = %.4E.\n ", result.length-1, result[result.length-1]);
+        System.out.println("");
+        System.out.format("Polinom interpolasi yang melalui %d buah titik tersebut adalah p%d(x) =", result.length, result.length-1);
+        System.out.println("");
+        for (int i=0;i<result.length-1;i++) {
+            System.out.format(" %.4Ex^%d +", result[i], i);
+        }
+        System.out.format(" %.4E^%d.\n", result[result.length-1], result.length-1);
         System.out.println("");
 
         // menghitung nilai hasil taksiran dari polinom
@@ -97,7 +99,7 @@ public class InterpolasiPolinom {
             taksirResult += result[i] * Math.pow(x, i);
         }
 
-        System.out.format("Dengan menggunakan polinom ini, maka nilai fungsi pada x = %f dapat ditaksir menghasilkan p%d(%f) = %f", x, result.length-1, x, taksirResult);
+        System.out.format("Dengan menggunakan polinom ini, maka nilai fungsi pada x = %.3f \ndapat ditaksir menghasilkan p%d(%.3f) = %f", x, result.length-1, x, taksirResult);
         // displayMatrix(m);
     }
 

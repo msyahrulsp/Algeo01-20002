@@ -86,7 +86,7 @@ public class GaussJordanElimination {
                 
                 
         }
-        m.displayMatriks();
+        // m.displayMatriks();
 
         // public static boolean nextColIs0(Matriks m, int iBrs, int iKol) {
         //     boolean nextzero = true;
