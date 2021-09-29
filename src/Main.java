@@ -52,6 +52,7 @@ public class Main {
 
         switch (opsi){
             case 1:
+                GaussElimination.gaussElimination(m);
                 GaussSolution.gaussSolution(m);
                 break;
             case 2:
@@ -61,15 +62,15 @@ public class Main {
             case 3:
                 Matriks mInverse = AdjointInverse.getResult(Matriks.copyMatriks(m, m.baris, m.kolom - 1));
                 if (mInverse.baris == 0) {
-                    System.out.println("Matriks tidak memiliki inverse\n");
+                    System.out.println("Matriks tidak memiliki inverse");
                 } else {
                     Matriks mB = Matriks.getMSolution(m);
                     InverseSolution.getISolution(mInverse, mB);
                 }
                 break;
-            // case 4:
-            //     crammerSolution(m);
-            //     break;
+            case 4:
+                Crammer.getSolution(m);
+                break;
             default:
                 System.out.println("\nMetode " + opsi + " tidak ditemukan\n");
                 break;

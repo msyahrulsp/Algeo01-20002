@@ -18,11 +18,19 @@ public class Matriks {
     public void displayMatriks() {
         for (int i = 0; i < this.baris; i++) {
             for (int j = 0; j < this.kolom; j++) {
-                System.out.print(this.ELMT[i][j]);
+                System.out.printf("%.2f", this.ELMT[i][j]);
                 if (j < this.kolom) System.out.print(" ");
             }
             if (i < this.baris) System.out.print("\n");
         }
+    }
+
+    public static Matriks changeRow(Matriks m1, Matriks m2, int col) {
+        //m2.kolomnya selalu 1
+        for (int i = 0; i < m1.baris; i++) {
+            m1.ELMT[i][col] = m2.ELMT[i][0];
+        }
+        return m1;
     }
 
     public static Matriks copyMatriks(Matriks m, int baris, int kolom) {
@@ -104,7 +112,7 @@ public class Matriks {
             scanner2.close();
 
         } catch (FileNotFoundException e) {
-            System.out.print("File tidak ditemukan.");
+            System.out.print("File tidak ditemukan");
         } catch (Exception e) {
             e.printStackTrace();
         }

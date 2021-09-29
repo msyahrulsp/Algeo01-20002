@@ -3,8 +3,6 @@ package Library;
 import matriks.Matriks;
 
 public class InverseSolution {
-    public Matriks mInverse, mB;
-
     public static void getISolution(Matriks mInverse, Matriks mB) {
         double[] res = multiply(mInverse, mB);
         Matriks.displaySPLSolution(res);
