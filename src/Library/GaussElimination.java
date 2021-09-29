@@ -2,7 +2,7 @@ package Library;
 
 import matriks.Matriks;
 
-// Prekondisi : Matriks m dengan m.baris <= m.kolom
+
 // OUTPUT : Matriks Eselon Baris
 public class GaussElimination {
     
@@ -12,6 +12,10 @@ public class GaussElimination {
     public static void gaussElimination(Matriks m) {
         swapCount = 0;
         constant = 1;
+
+        if (m.baris > m.kolom-1) {
+            m.baris = m.kolom-1;
+        }
 
         for (int iBrs = 0; iBrs < m.baris; iBrs++) {
             int iKol = iBrs;
