@@ -43,6 +43,14 @@ public class Matriks {
         return res;
     }
 
+    public static double[] getDSolution(Matriks m) {
+        double[] res = new double[m.baris];
+        for (int i = 0; i < m.baris; i++) {
+            res[i] = m.ELMT[i][m.kolom - 1];
+        }
+        return res;
+    }
+
     public static Matriks getMSolution(Matriks m) {
         Matriks res = new Matriks(m.baris, 1);
         for (int i = 0; i < m.baris; i++) {
@@ -126,6 +134,23 @@ public class Matriks {
         }
 
         return this;
+    }
+
+    public static Matriks mRegresi() {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Masukkan jumlah peubah x: ");
+        int kolom = input.nextInt();
+        System.out.print("Masukkan jumlah sampel: ");
+        int baris = input.nextInt();
+
+        Matriks m = new Matriks(baris + 1, kolom);
+        for (int i = 0; i < baris; i++) {
+            for (int j = 0; j < kolom; j++) {
+                m.ELMT[i][j] = input.nextDouble();
+            }
+        }
+
+        return m;
     }
     
     public static void displaySPLSolution(double[] result) {

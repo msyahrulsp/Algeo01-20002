@@ -4,7 +4,6 @@ import matriks.Matriks;
 
 public class GaussJordanSolution {
     public static void gaussSolution(Matriks m) {
-        // gaussElimination(m);
         m.displayMatriks();
         if (isNoSolution(m)) {
             System.out.println("Sistem persamaan linear ini tidak memiliki solusi");
