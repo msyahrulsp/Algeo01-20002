@@ -45,7 +45,7 @@ public class Main {
             m = Matriks.keyboardInput();
         } else {
             m = new Matriks(0, 0);
-            System.out.print("\nMasukkan nama file: ");
+            System.out.print("\n> Masukkan nama file: ");
             String file = input.next();
             m.fileInput(file);
         }
@@ -102,7 +102,7 @@ public class Main {
             m = Matriks.keyboardInputAug();
         } else {
             m = new Matriks(0, 0);
-            System.out.print("\nMasukkan nama file: ");
+            System.out.print("\n> Masukkan nama file: ");
             String file = input.next();
             m.fileInput(file);
         }
@@ -142,7 +142,7 @@ public class Main {
     //         m = Matriks.keyboardInputAug();
     //     } else {
     //         m = new Matriks(0, 0);
-    //         System.out.print("\nMasukkan nama file: ");
+    //         System.out.print("\n> Masukkan nama file: ");
     //         String file = input.next();
     //         m.fileInput(file);
     //     }
@@ -193,7 +193,7 @@ public class Main {
             m = Matriks.readSquareMatriks();
         } else {
             m = new Matriks(0, 0);
-            System.out.print("\nMasukkan nama file: ");
+            System.out.print("\n> Masukkan nama file: ");
             String file = input.next();
             m.fileInput(file);
         }
@@ -253,7 +253,7 @@ public class Main {
             m = Matriks.mRegresi();
         } else {
             m = new Matriks(0, 0);
-            System.out.print("\nMasukkan nama file: ");
+            System.out.print("\n> Masukkan nama file: ");
             String file = input.next();
             m.fileInput(file);
         }
