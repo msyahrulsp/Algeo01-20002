@@ -1,1 +1,13 @@
-java --enable-preview -jar Algeo01-20002.jar 
+@echo off
+
+cd %CD%/src/
+
+echo Compiling Program...
+javac -d ../bin ./Main.java
+
+echo Running Program...
+cd ..
+cd %CD%/bin/
+java Main
+cd ..
+PAUSE

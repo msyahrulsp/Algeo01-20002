@@ -11,14 +11,22 @@ Algeo01-20002
 │   └── util                # Berisi class utilitas
 ├── test                    # Berisi data uji
 ├── doc                     # Berisi laporan
-└── lib                     # Berisi laporan yang dibuat
+└── lib                     # Berisi library (*.jar) yang dibuat
 ```
 
 ## Cara pakai
-Rebuild Library:
-Algeo01-20002.jar -> Action: Clean
-Algeo01-20002.jar -> Action: Build
-*entah kenapa somehow kalo cuman Build doang, library yang lama enggak keupdate.
+- Pastikan versi JDK anda [JDK 16](https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.12+7/OpenJDK11U-jdk_x64_windows_hotspot_11.0.12_7.msi)
+- Pastikan ada [Git](https://git-scm.com/) juga
+### Menjalankan Program Langsung
+1. Clone repo ini: `git clone https://github.com/msyahrulsp/Algeo01-20002.git Algeo01-20002`
+2. Pergi ke Algeo01-20002: `cd Algeo01-20002`
+3. Jalankan run.bat: `run.bat`
+
+### Jika Ingin Mengedit Program, Lakukan Langkah di bawah (Setelah diclone)
+1. Pergi ke src: `cd src`
+2. Compile Program yang telah diedit: `javac -d ../bin ./Main.java`
+3. Pergi ke bin: `cd ../bin`
+4. Jalankan Main.class: `java Main`
 
 ## Anggota Kelompok:
 | NIM      | NAMA                   |
