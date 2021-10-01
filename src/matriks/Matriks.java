@@ -117,6 +117,7 @@ public class Matriks {
     public Matriks fileInput(String fileName) {
         try {
             String path = System.getProperty("user.dir"); // HARUSNYA sampai parent folder doang
+            path = path.replace("\\bin", ""); // Safecase user.dir sampe bin hasilnya
             path = path.replace("\\src", ""); // Safecase user.dir sampe src hasilnya
             if (!fileName.contains(".txt")) fileName = fileName + ".txt";
             File inputFile = new File(new File(path + "/test/" + fileName).getCanonicalPath());
