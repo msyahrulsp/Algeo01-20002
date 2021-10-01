@@ -29,11 +29,11 @@ public class Reg {
                 if (i == 0) {
                     tak += res[i];
                 } else {
-                    System.out.printf("x%d = %.2f", i, taksir[i - 1]);
+                    System.out.printf("x%d = %.2f\n", i, taksir[i - 1]);
                     tak += res[i] * taksir[i - 1];
                 }
             }
-            System.out.printf("\n\nHasil taksiran\n%.4f", tak);
+            System.out.printf("\nHasil taksiran\n%.4f", tak);
         }
     }
 
