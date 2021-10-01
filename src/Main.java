@@ -10,6 +10,7 @@ public class Main {
     
     public static Scanner input = new Scanner(System.in);
     public static PrintStream terminal = System.out;
+    public static int opsi;
     public static byte inputType = 2;
     public static byte outputType = 2;
 
@@ -26,18 +27,18 @@ public class Main {
             else if (op == 5) {getInterpolation();}
             else if (op == 6) {getRegression();}
             else if (op == 7) {
-                System.out.println("\n----------------------------------------");
+                System.out.println("----------------------------------------");
             }
-            else {System.out.println("\nOperasi " + op + " tidak ditemukan\n");}
+            else {System.out.println("Operasi " + op + " tidak ditemukan");}
         } while (op != 7);
 
     }
 
     public static void getSolution() {
         Menu.SPLMenu();
-        byte opsi = input.nextByte();
+        select(1, 4);
         Menu.InputMenuType();
-        inputType = input.nextByte();
+        choose("in");
 
         Matriks m;
         if (inputType == 2) {
@@ -54,21 +55,21 @@ public class Main {
             case 1:
                 GaussElimination.gaussElimination(m);
                 Menu.OutputMenu();
-                outputType = input.nextByte();
+                choose("out");
                 if (outputType == 1) FileOut.FileOutput();
                 GaussSolution.gaussSolution(m);
                 break;
             case 2:
                 GaussJordanElimination.gaussJordanElimination(m);
                 Menu.OutputMenu();
-                outputType = input.nextByte();
+                choose("out");
                 if (outputType == 1) FileOut.FileOutput();
                 GaussSolution.gaussSolution(m);
                 break;
             case 3:
                 Matriks mInverse = AdjointInverse.getResult(Matriks.copyMatriks(m, m.baris, m.kolom - 1));
                 Menu.OutputMenu();
-                outputType = input.nextByte();
+                choose("out");
                 if (outputType == 1) FileOut.FileOutput();
                 if (mInverse.baris == 0) {
                     System.out.println("Matriks tidak memiliki inverse. Silahkan gunakan metode Gauss/Gauss-Jordan");
@@ -79,7 +80,7 @@ public class Main {
                 break;
             case 4:
                 Menu.OutputMenu();
-                outputType = input.nextByte();
+                choose("out");
                 if (outputType == 1) FileOut.FileOutput();
                 Crammer.getSolution(m);
                 break;
@@ -92,9 +93,9 @@ public class Main {
 
     public static void getDeterminant() {
         Menu.DeterminantMenu();
-        byte opsi = input.nextByte();  
+        select(1, 2);  
         Menu.InputMenuType();
-        inputType = input.nextByte();      
+        choose("in");      
 
         Matriks m;
         if (inputType == 2) {
@@ -112,14 +113,14 @@ public class Main {
             case 1:
                 det = GaussDeterminant.gaussDeterminant(m);
                 Menu.OutputMenu();
-                outputType = input.nextByte();
+                choose("out");
                 if (outputType == 1) FileOut.FileOutput();
                 Matriks.displayDeterminant(det);
                 break;
             case 2:
                 det = CofactorDeterminant.getDeterminant(m);
                 Menu.OutputMenu();
-                outputType = input.nextByte();
+                choose("out");
                 if (outputType == 1) FileOut.FileOutput();
                 Matriks.displayDeterminant(det);
                 break;
@@ -131,66 +132,65 @@ public class Main {
     }
 
     public static void getTransposeCofactorAdjoint() {
-    //     Menu.TransposeMenu();
-    //     byte opsi = input.nextByte();
-    //     Menu.InputMenuType();
-    //     inputType = input.nextByte();
-
-    //     Matriks m;
-    //     if (inputType == 2) {
-    //         System.out.println("\nInput matriks: ");
-    //         m = Matriks.keyboardInputAug();
-    //     } else {
-    //         m = new Matriks(0, 0);
-    //         System.out.print("\n> Masukkan nama file: ");
-    //         String file = input.next();
-    //         m.fileInput(file);
-    //     }
-
-    //     switch (opsi){
-    //         case 1:
-    //             m = Matriks.keyboardInput();
-    //             m = TransposeCofactorAdjoint.getTranspose(m);
-    //             Menu.OutputMenu();
-    //             outputType = input.nextByte();
-    //             if (outputType == 1) FileOut.FileOutput();
-    //             m.displayMatriks();
-    //             break;
-    //         case 2:
-    //             m = Matriks.readSquareMatriks();
-    //             m = TransposeCofactorAdjoint.getCofactor(m);
-    //             Menu.OutputMenu();
-    //             outputType = input.nextByte();
-    //             if (outputType == 1) FileOut.FileOutput();
-    //             m.displayMatriks();
-    //             break;
-    //         case 3:
-    //             m = Matriks.readSquareMatriks();
-    //             m = TransposeCofactorAdjoint.getAdjoint(m);
-    //             Menu.OutputMenu();
-    //             outputType = input.nextByte();
-    //             if (outputType == 1) FileOut.FileOutput();
-    //             m.displayMatriks();
-    //             break;
-            
-    //         default:
-    //             System.out.println("\nOperasi " + opsi + " tidak ditemukan\n");
-    //             break;
-    //     }
-    //     System.setOut(terminal);
-        System.out.println("Test12345");
-    }
-
-    public static void getMatrixInverse() {
-        Menu.InverseMenu();
-        byte opsi = input.nextByte();
+        Menu.TransposeMenu();
+        select(1, 3);
         Menu.InputMenuType();
-        inputType = input.nextByte();
+        choose("in");
 
         Matriks m;
         if (inputType == 2) {
             System.out.println("\nInput matriks: ");
-            m = Matriks.readSquareMatriks();
+            m = Matriks.keyboardInputAug();
+        } else {
+            m = new Matriks(0, 0);
+            System.out.print("\n> Masukkan nama file: ");
+            String file = input.next();
+            m.fileInput(file);
+        }
+
+        switch (opsi){
+            case 1:
+                m = Matriks.keyboardInput();
+                m = TransposeCofactorAdjoint.getTranspose(m);
+                Menu.OutputMenu();
+                choose("out");
+                if (outputType == 1) FileOut.FileOutput();
+                m.displayMatriks();
+                break;
+            case 2:
+                m = Matriks.keyboardInputSquare();
+                m = TransposeCofactorAdjoint.getCofactor(m);
+                Menu.OutputMenu();
+                choose("out");
+                if (outputType == 1) FileOut.FileOutput();
+                m.displayMatriks();
+                break;
+            case 3:
+                m = Matriks.keyboardInputSquare();
+                m = TransposeCofactorAdjoint.getAdjoint(m);
+                Menu.OutputMenu();
+                choose("out");
+                if (outputType == 1) FileOut.FileOutput();
+                m.displayMatriks();
+                break;
+            
+            default:
+                System.out.println("\nOperasi " + opsi + " tidak ditemukan\n");
+                break;
+        }
+        System.setOut(terminal);
+    }
+
+    public static void getMatrixInverse() {
+        Menu.InverseMenu();
+        select(1, 2);
+        Menu.InputMenuType();
+        choose("in");
+
+        Matriks m;
+        if (inputType == 2) {
+            System.out.println("\nInput matriks: ");
+            m = Matriks.keyboardInputSquare();
         } else {
             m = new Matriks(0, 0);
             System.out.print("\n> Masukkan nama file: ");
@@ -201,13 +201,13 @@ public class Main {
         switch (opsi){
             case 1:
                 Menu.OutputMenu();
-                outputType = input.nextByte();
+                choose("out");
                 if (outputType == 1) FileOut.FileOutput();
                 GaussJordanInverseSolution.jordanInverseSolution(m);
                 break;
             case 2:
                 Menu.OutputMenu();
-                outputType = input.nextByte();
+                choose("out");
                 if (outputType == 1) FileOut.FileOutput();
                 AdjointInverse.getInverse(m);
                 break;
@@ -220,7 +220,7 @@ public class Main {
 
     public static void getInterpolation() {
         Menu.InputMenuType();
-        inputType = input.nextByte();
+        choose("in");
 
         Matriks m;
         double x;
@@ -237,7 +237,7 @@ public class Main {
         x = InterpolasiPolinom.readX();
 
         Menu.OutputMenu();
-        outputType = input.nextByte();
+        choose("out");
         if (outputType == 1) FileOut.FileOutput();
         InterpolasiPolinom.polinomSolution(m, x);
         System.setOut(terminal);
@@ -245,7 +245,7 @@ public class Main {
 
     public static void getRegression() {
         Menu.InputMenuType();
-        inputType = input.nextByte();
+        choose("in");
 
         Matriks m;
         if (inputType == 2) {
@@ -260,9 +260,36 @@ public class Main {
 
         double[] taksiran = Reg.getTaksiran(m);
         Menu.OutputMenu();
-        outputType = input.nextByte();
+        choose("out");
         if (outputType == 1) FileOut.FileOutput();
         Reg.getSolution(m, taksiran);
         System.setOut(terminal);
+    }
+
+    public static void choose(String type) {
+        if (type == "out") {
+            outputType = input.nextByte();
+            while ((outputType < 1) || (outputType > 2)) {
+                System.out.println("Opsi hanya 1 dan 2");
+                System.out.print("Pilih: ");
+                outputType = input.nextByte();
+            }
+        } else {
+            inputType = input.nextByte();
+            while ((inputType < 1) || (inputType > 2)) {
+                System.out.println("Opsi hanya 1 dan 2");
+                System.out.print("Pilih: ");
+                inputType = input.nextByte();
+            }   
+        }
+    }
+
+    public static void select(int min, int max) {
+        opsi = input.nextInt();
+        while ((opsi < min) || (opsi > max)) {
+            System.out.println("Opsi hanya " + min + " sampai " + max);
+            System.out.print("Pilih metode: ");
+            opsi = input.nextInt();
+        }
     }
 }

@@ -2,7 +2,6 @@ package Library;
 
 import java.util.Scanner;
 import static Library.GaussSolution.*;
-import static Library.GaussElimination.*;
 import matriks.Matriks;
 
 public class InterpolasiPolinom {
@@ -12,7 +11,7 @@ public class InterpolasiPolinom {
     {
         int i, j;
         Scanner input = new Scanner(System.in);
-        System.out.println("Masukkan jumlah n: ");
+        System.out.print("Masukkan jumlah n: ");
         int n = input.nextInt();
 
         Matriks m = new Matriks (n, 2);
@@ -87,7 +86,7 @@ public class InterpolasiPolinom {
             taksirResult += result[i] * Math.pow(x, i);
         }
 
-        System.out.format("Dengan menggunakan polinom ini, maka nilai fungsi pada x = %.3f \ndapat ditaksir menghasilkan p%d(%.3f) = %f", x, result.length-1, x, taksirResult);
+        System.out.format("Dengan menggunakan polinom ini, maka nilai fungsi pada x = %.3f \ndapat ditaksir menghasilkan p%d(%.3f) = %f\n", x, result.length-1, x, taksirResult);
     }
 
     public static void displaySPLSolution(double[] result) {

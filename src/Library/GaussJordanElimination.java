@@ -3,10 +3,7 @@ package Library;
 import matriks.Matriks;
 
 public class GaussJordanElimination {
-    public static void gaussJordanElimination(Matriks m) {
-        double constant = 1;
-        
-        // transversal setiap baris
+    public static void gaussJordanElimination(Matriks m) {// transversal setiap baris
         for (int iBrs=0; iBrs<m.baris;iBrs++) {
             int iKol = iBrs;
             while (allElmtColUnderIs0(m,iBrs,iKol) && (iKol<m.kolom-1)) {
@@ -23,7 +20,6 @@ public class GaussJordanElimination {
                         iLead++;
                     }
                     double factor = m.ELMT[i][iLead];
-                    constant /= factor;
                     for (int j=iLead; j<m.kolom; j++) {
                         if (m.ELMT[i][j] != 0) {
                             m.ELMT[i][j] /= factor;

@@ -27,7 +27,6 @@ public class Menu {
 
     public static void DeterminantMenu() {
         System.out.print("""
-
                 \n1. Metode Reduksi Baris
                 2. Metode Ekspansi Kofaktor
                 """);
@@ -36,7 +35,6 @@ public class Menu {
 
     public static void TransposeMenu() {
         System.out.print("""
-
                 \n1. Transpose Matriks
                 2. Matriks Kofaktor
                 3. Adjoint Matriks

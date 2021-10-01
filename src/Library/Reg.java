@@ -33,7 +33,7 @@ public class Reg {
                     tak += res[i] * taksir[i - 1];
                 }
             }
-            System.out.printf("\nHasil taksiran\n%.4f", tak);
+            System.out.printf("\nHasil taksiran\n%.4f\n", tak);
         }
     }
 

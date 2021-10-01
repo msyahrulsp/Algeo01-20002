@@ -59,7 +59,7 @@ public class Matriks {
         return res;
     }
 
-    public static Matriks readSquareMatriks() {
+    public static Matriks keyboardInputSquare() {
         Scanner input = new Scanner(System.in);
         System.out.print("Masukkan ukuran matriks: ");
         int N = input.nextInt();
@@ -81,16 +81,16 @@ public class Matriks {
         System.out.print("Masukkan jumlah kolom: ");
         int kolom = input.nextInt();
         
-        Matriks m = new Matriks(baris, kolom);
-        System.out.println("\nInput Matriks a[i][j]\n");
+        Matriks m = new Matriks(baris, kolom + 1);
+        System.out.println("\nInput Matriks a[i][j]");
         for (int i = 0; i < baris; i++) {
-            for (int j = 0; j < kolom - 1; j++) {
+            for (int j = 0; j < kolom; j++) {
                 m.ELMT[i][j] = input.nextDouble();
             }
         }
-        System.out.println("\nInput Matriks b[i]\n");
+        System.out.println("\nInput Matriks b[i]");
         for (int k = 0; k < baris; k++) {
-            m.ELMT[k][kolom - 1] = input.nextDouble();
+            m.ELMT[k][kolom] = input.nextDouble();
         }
         // input.close();
         return m;
@@ -104,7 +104,7 @@ public class Matriks {
         int kolom = input.nextInt();
         
         Matriks m = new Matriks(baris, kolom);
-        System.out.println("\nInput Matriks\n");
+        System.out.println("\nInput Matriks");
         for (int i = 0; i < baris; i++) {
             for (int j = 0; j < kolom; j++) {
                 m.ELMT[i][j] = input.nextDouble();
@@ -152,10 +152,11 @@ public class Matriks {
             scanner2.close();
 
         } catch (FileNotFoundException e) {
-            System.out.print("File tidak ditemukan");
-            e.printStackTrace();
+            System.out.print("File tidak ditemukan\n");
+            System.exit(0);
         } catch (Exception e) {
             e.printStackTrace();
+            System.exit(0);
         }
 
         return this;

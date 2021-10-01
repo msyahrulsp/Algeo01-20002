@@ -6,7 +6,7 @@ import matriks.Matriks;
 public class GaussSolution {
     public static void gaussSolution(Matriks m) {
         gaussElimination(m);
-        System.out.println("Hasil Eliminasi Gauss: ");
+        System.out.println("\nHasil Eliminasi Gauss: ");
         m.displayMatriks();
         if (isNoSolution(m)) {
             System.out.println("\nSistem persamaan linear ini tidak memiliki solusi");
