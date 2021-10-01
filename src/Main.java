@@ -1,26 +1,22 @@
 import java.util.Scanner;
+import java.io.PrintStream;
 
 import Library.*;
 import matriks.Matriks;
+import util.FileOut;
+import util.Menu;
 
 public class Main {
     
     public static Scanner input = new Scanner(System.in);
+    public static PrintStream terminal = System.out;
+    public static byte inputType = 2;
+    public static byte outputType = 2;
 
     public static void main(String[] args) {
         byte op;
         do {
-            System.out.println("\n-------------KALKULATOR MATRIKS-------------");
-            System.out.println("""
-                    1. Menentukan Solusi Persamaan Linier
-                    2. Determinan
-                    3. Transpose, Kofaktor, Adjoin 
-                    4. Matriks Balikan
-                    5. Interpolasi Polinom
-                    6. Regresi Linier Berganda
-                    7. Keluar
-                    """);
-            System.out.print("Pilih operasi: ");
+            Menu.MainMenu();
             op = input.nextByte();
 
             if (op == 1) {getSolution();}
@@ -37,156 +33,236 @@ public class Main {
 
     }
 
-    public static void getSolution(){
-        System.out.println("""
-                1. Metode eliminasi Gauss
-                2. Metode eliminasi Gauss-Jordan
-                3. Metode matriks balikan
-                4. Kaidah Crammer
-                """);
-        
-        System.out.print("Pilih metode: ");
+    public static void getSolution() {
+        Menu.SPLMenu();
         byte opsi = input.nextByte();
-        System.out.println("Input matriks: ");
-        Matriks m = Matriks.keyboardInput();
+        Menu.InputMenuType();
+        inputType = input.nextByte();
 
-        switch (opsi){
+        Matriks m;
+        if (inputType == 2) {
+            System.out.println("\nInput matriks: ");
+            m = Matriks.keyboardInput();
+        } else {
+            m = new Matriks(0, 0);
+            System.out.print("\nMasukkan nama file: ");
+            String file = input.next();
+            m.fileInput(file);
+        }
+
+        switch (opsi) {
             case 1:
                 GaussElimination.gaussElimination(m);
+                Menu.OutputMenu();
+                outputType = input.nextByte();
+                if (outputType == 1) FileOut.FileOutput();
                 GaussSolution.gaussSolution(m);
                 break;
             case 2:
                 GaussJordanElimination.gaussJordanElimination(m);
-                GaussJordanSolution.gaussSolution(m);
+                Menu.OutputMenu();
+                outputType = input.nextByte();
+                if (outputType == 1) FileOut.FileOutput();
+                GaussSolution.gaussSolution(m);
                 break;
             case 3:
                 Matriks mInverse = AdjointInverse.getResult(Matriks.copyMatriks(m, m.baris, m.kolom - 1));
+                Menu.OutputMenu();
+                outputType = input.nextByte();
+                if (outputType == 1) FileOut.FileOutput();
                 if (mInverse.baris == 0) {
-                    System.out.println("Matriks tidak memiliki inverse");
+                    System.out.println("Matriks tidak memiliki inverse. Silahkan gunakan metode Gauss/Gauss-Jordan");
                 } else {
                     Matriks mB = Matriks.getMSolution(m);
                     InverseSolution.getISolution(mInverse, mB);
                 }
                 break;
             case 4:
+                Menu.OutputMenu();
+                outputType = input.nextByte();
+                if (outputType == 1) FileOut.FileOutput();
                 Crammer.getSolution(m);
                 break;
             default:
                 System.out.println("\nMetode " + opsi + " tidak ditemukan\n");
                 break;
        }
+       System.setOut(terminal);
     }
 
     public static void getDeterminant() {
-        System.out.println("""
+        Menu.DeterminantMenu();
+        byte opsi = input.nextByte();  
+        Menu.InputMenuType();
+        inputType = input.nextByte();      
 
-                1. Metode Eliminasi Gauss
-                2. Metode Eliminasi Gauss-Jordan
-                3. Metode Matriks balikan
-                4. Kaidah Crammer
-                5. Metode Kofaktor
-                """);
-
-        
-        System.out.print("Pilih metode: ");
-        byte opsi = input.nextByte();        
-
-        System.out.println("Input matriks: ");
-        Matriks m = Matriks.readSquareMatriks();
+        Matriks m;
+        if (inputType == 2) {
+            System.out.println("\nInput matriks: ");
+            m = Matriks.keyboardInputAug();
+        } else {
+            m = new Matriks(0, 0);
+            System.out.print("\nMasukkan nama file: ");
+            String file = input.next();
+            m.fileInput(file);
+        }
         double det;
 
         switch (opsi){
             case 1:
                 det = GaussDeterminant.gaussDeterminant(m);
+                Menu.OutputMenu();
+                outputType = input.nextByte();
+                if (outputType == 1) FileOut.FileOutput();
                 Matriks.displayDeterminant(det);
                 break;
-            // case 2:
-            //     GaussJordanDeterminant();
-            //     break;
-            // case 3:
-            //     InverseDeterminant();
-            //     break;
-            // case 4:
-            //     CrammerDeterminant());
-            //     break;
-            case 5:
+            case 2:
                 det = CofactorDeterminant.getDeterminant(m);
+                Menu.OutputMenu();
+                outputType = input.nextByte();
+                if (outputType == 1) FileOut.FileOutput();
                 Matriks.displayDeterminant(det);
                 break;
             default:
                 System.out.println("\nMetode " + opsi + " tidak ditemukan\n");
                 break;
         }
-
+        System.setOut(terminal);
     }
 
     public static void getTransposeCofactorAdjoint() {
-        System.out.println("""
+    //     Menu.TransposeMenu();
+    //     byte opsi = input.nextByte();
+    //     Menu.InputMenuType();
+    //     inputType = input.nextByte();
 
-                1. Transpose Matriks
-                2. Matriks Kofaktor
-                3. Adjoint Matriks
-                """);
+    //     Matriks m;
+    //     if (inputType == 2) {
+    //         System.out.println("\nInput matriks: ");
+    //         m = Matriks.keyboardInputAug();
+    //     } else {
+    //         m = new Matriks(0, 0);
+    //         System.out.print("\nMasukkan nama file: ");
+    //         String file = input.next();
+    //         m.fileInput(file);
+    //     }
 
-        System.out.print("Pilih metode: ");
-        byte opsi = input.nextByte();
-        System.out.println("Input matriks: ");
-        Matriks m;
-
-        switch (opsi){
-            case 1:
-                m = Matriks.keyboardInput();
-                m = TransposeCofactorAdjoint.getTranspose(m);
-                m.displayMatriks();
-                break;
-            case 2:
-                m = Matriks.readSquareMatriks();
-                m = TransposeCofactorAdjoint.getCofactor(m);
-                m.displayMatriks();
-                break;
-            case 3:
-                m = Matriks.readSquareMatriks();
-                m = TransposeCofactorAdjoint.getAdjoint(m);
-                m.displayMatriks();
-                break;
+    //     switch (opsi){
+    //         case 1:
+    //             m = Matriks.keyboardInput();
+    //             m = TransposeCofactorAdjoint.getTranspose(m);
+    //             Menu.OutputMenu();
+    //             outputType = input.nextByte();
+    //             if (outputType == 1) FileOut.FileOutput();
+    //             m.displayMatriks();
+    //             break;
+    //         case 2:
+    //             m = Matriks.readSquareMatriks();
+    //             m = TransposeCofactorAdjoint.getCofactor(m);
+    //             Menu.OutputMenu();
+    //             outputType = input.nextByte();
+    //             if (outputType == 1) FileOut.FileOutput();
+    //             m.displayMatriks();
+    //             break;
+    //         case 3:
+    //             m = Matriks.readSquareMatriks();
+    //             m = TransposeCofactorAdjoint.getAdjoint(m);
+    //             Menu.OutputMenu();
+    //             outputType = input.nextByte();
+    //             if (outputType == 1) FileOut.FileOutput();
+    //             m.displayMatriks();
+    //             break;
             
-            default:
-                System.out.println("\nOperasi " + opsi + " tidak ditemukan\n");
-                break;
-        }
+    //         default:
+    //             System.out.println("\nOperasi " + opsi + " tidak ditemukan\n");
+    //             break;
+    //     }
+    //     System.setOut(terminal);
+        System.out.println("Test12345");
     }
 
-    public static void getMatrixInverse(){
-        System.out.println("""
-        
-                1. Metode Gauss-Jordan
-                2. Metode Adjoin
-                """);
-
-        System.out.print("Pilih metode: ");
+    public static void getMatrixInverse() {
+        Menu.InverseMenu();
         byte opsi = input.nextByte();
-        System.out.println("Input matriks: ");
-        Matriks m = Matriks.readSquareMatriks();
+        Menu.InputMenuType();
+        inputType = input.nextByte();
+
+        Matriks m;
+        if (inputType == 2) {
+            System.out.println("\nInput matriks: ");
+            m = Matriks.readSquareMatriks();
+        } else {
+            m = new Matriks(0, 0);
+            System.out.print("\nMasukkan nama file: ");
+            String file = input.next();
+            m.fileInput(file);
+        }
 
         switch (opsi){
             case 1:
+                Menu.OutputMenu();
+                outputType = input.nextByte();
+                if (outputType == 1) FileOut.FileOutput();
                 GaussJordanInverseSolution.jordanInverseSolution(m);
                 break;
             case 2:
+                Menu.OutputMenu();
+                outputType = input.nextByte();
+                if (outputType == 1) FileOut.FileOutput();
                 AdjointInverse.getInverse(m);
                 break;
             default:
                 System.out.println("\nMetode " + opsi + " tidak ditemukan\n");
                 break;
         }
-
+        System.setOut(terminal);
     }
 
     public static void getInterpolation() {
-        InterpolasiPolinom.polinomSolution();
+        Menu.InputMenuType();
+        inputType = input.nextByte();
+
+        Matriks m;
+        double x;
+        if (inputType == 2) {
+            System.out.println("\nInput matriks: ");
+            m = InterpolasiPolinom.readPolinom();
+            m = InterpolasiPolinom.makePolinom(m);
+        } else {
+            m = new Matriks(0, 0);
+            System.out.print("\n> Masukkan nama file: ");
+            String file = input.next();
+            m.fileInput(file);
+        }
+        x = InterpolasiPolinom.readX();
+
+        Menu.OutputMenu();
+        outputType = input.nextByte();
+        if (outputType == 1) FileOut.FileOutput();
+        InterpolasiPolinom.polinomSolution(m, x);
+        System.setOut(terminal);
     }
 
     public static void getRegression() {
-        // langsung manggil fungsi ??
+        Menu.InputMenuType();
+        inputType = input.nextByte();
+
+        Matriks m;
+        if (inputType == 2) {
+            System.out.println("\nInput matriks: ");
+            m = Matriks.mRegresi();
+        } else {
+            m = new Matriks(0, 0);
+            System.out.print("\nMasukkan nama file: ");
+            String file = input.next();
+            m.fileInput(file);
+        }
+
+        double[] taksiran = Reg.getTaksiran(m);
+        Menu.OutputMenu();
+        outputType = input.nextByte();
+        if (outputType == 1) FileOut.FileOutput();
+        Reg.getSolution(m, taksiran);
+        System.setOut(terminal);
     }
 }

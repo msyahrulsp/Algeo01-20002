@@ -4,7 +4,7 @@ import matriks.Matriks;
 import java.util.Scanner;
 
 public class Reg {
-    public static void getSolution(Matriks m) {
+    public static void getSolution(Matriks m, double[] taksir) {
         Matriks reg = Reg.getMatriks(m);
         Matriks gReg = Matriks.copyMatriks(reg, reg.baris, reg.kolom);
         GaussJordanElimination.gaussJordanElimination(gReg);
@@ -14,27 +14,37 @@ public class Reg {
         } else if (GaussJordanSolution.isNoSolution(gReg)) {
             System.out.println("Tidak mempunyai solusi");
         } else {
-            gReg.displayMatriks();
+            System.out.println("Persamaan yang didapatkan");
             double[] res = Matriks.getDSolution(gReg);
             displayEquation(reg);
 
-            System.out.println("Hasil");
+            System.out.println("\nHasil");
             for (int i = 0; i < res.length; i++) {
                 System.out.printf("b%d = %.4f\n", i, res[i]);
             }
 
+            System.out.println("\nPentaksiran");
             double tak = 0;
-            Scanner scanner = new Scanner(System.in);
             for (int i = 0; i < res.length; i++) {
                 if (i == 0) {
                     tak += res[i];
                 } else {
-                    System.out.printf("Masukkan x%d = ", i);
-                    tak += res[i] * scanner.nextDouble();
+                    System.out.printf("\nx%d = %.2f", i, taksir[i - 1]);
+                    tak += res[i] * taksir[i - 1];
                 }
             }
             System.out.printf("\nHasil taksiran\n%.4f", tak);
         }
+    }
+
+    public static double[] getTaksiran(Matriks m) {
+        double[] t = new double[m.kolom - 1];
+        Scanner scanner = new Scanner(System.in);
+        for (int i = 0; i < t.length; i ++) {
+            System.out.printf("Masukkan x%d = ", i);
+            t[i] = scanner.nextDouble();
+        }
+        return t;
     }
 
     private static Matriks getMatriks(Matriks m) {

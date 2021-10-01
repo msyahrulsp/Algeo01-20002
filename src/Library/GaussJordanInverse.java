@@ -66,7 +66,6 @@ public class GaussJordanInverse {
             if (m.ELMT[iBrs][i] == 1)
             {
                 isLead = false;
-                // idxLead = i;
             }
             i ++;
         }
@@ -156,44 +155,28 @@ public class GaussJordanInverse {
 
     }
 
-    public static Matriks makeInverse(Matriks m)
-    {
-//        m.baris = 2 * m.baris;
-//        m.kolom = 2 * m.kolom;
+    public static Matriks makeInverse(Matriks m) {
         Matriks n = new Matriks(m.baris, 2 * m.kolom);
 
-        for (int rows = 0; rows < m.baris; rows++)
-        {
+        for (int rows = 0; rows < m.baris; rows++) {
             for (int cols = 0; cols < m.kolom;cols++)
             {
                 n.ELMT[rows][cols] = m.ELMT[rows][cols];
             }
         }
-        for (int rows=0; rows < n.baris; rows++)
-        {
-//            for (int cols=0;cols<n.kolom;cols++)
-//            {
-//
-//            }
+        for (int rows=0; rows < n.baris; rows++) {
             n.ELMT[rows][n.baris+rows] = 1;
         }
-        // displayMatrix(n);
         GaussJordanElimination.gaussJordanElimination(n);
-        // displayMatrix(n);
         Matriks o = new Matriks(m.baris, 2 * m.kolom);
 
-        for (int rows = 0; rows < m.baris; rows++)
-        {
+        for (int rows = 0; rows < m.baris; rows++) {
             for (int cols = 0; cols < m.kolom;cols++)
             {
                 o.ELMT[rows][cols] = n.ELMT[rows][cols+m.kolom];
             }
         }
         o.kolom = o.kolom/2;
-        // displayMatrix(o);
-
-
-//                n.ELMT[1][3]
         return o;
     }
 }

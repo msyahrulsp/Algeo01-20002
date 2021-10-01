@@ -12,7 +12,7 @@ public class Crammer {
             Matriks baseB = Matriks.getMSolution(m);
             double det = CofactorDeterminant.getDeterminant(base);
             if (det == 0) {
-                System.out.println("Tidak ada solusi");
+                System.out.println("Matriks tidak ada inverse, tidak bisa menggunakan crammer");
             } else {
                 Matriks temp = base;
                 for (int i = 0; i < m.baris; i++) {

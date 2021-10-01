@@ -82,6 +82,29 @@ public class Matriks {
         int kolom = input.nextInt();
         
         Matriks m = new Matriks(baris, kolom);
+        System.out.println("\nInput Matriks a[i][j]\n");
+        for (int i = 0; i < baris; i++) {
+            for (int j = 0; j < kolom - 1; j++) {
+                m.ELMT[i][j] = input.nextDouble();
+            }
+        }
+        System.out.println("\nInput Matriks b[i]\n");
+        for (int k = 0; k < baris; k++) {
+            m.ELMT[k][kolom - 1] = input.nextDouble();
+        }
+        // input.close();
+        return m;
+    }
+
+    public static Matriks keyboardInputAug() {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Masukkan jumlah baris: ");
+        int baris = input.nextInt();
+        System.out.print("Masukkan jumlah kolom: ");
+        int kolom = input.nextInt();
+        
+        Matriks m = new Matriks(baris, kolom);
+        System.out.println("\nInput Matriks\n");
         for (int i = 0; i < baris; i++) {
             for (int j = 0; j < kolom; j++) {
                 m.ELMT[i][j] = input.nextDouble();
@@ -95,6 +118,7 @@ public class Matriks {
         try {
             String path = System.getProperty("user.dir"); // HARUSNYA sampai parent folder doang
             path = path.replace("\\src", ""); // Safecase user.dir sampe src hasilnya
+            if (!fileName.contains(".txt")) fileName = fileName + ".txt";
             File inputFile = new File(new File(path + "/test/" + fileName).getCanonicalPath());
             Scanner scanner = new Scanner(inputFile);
 
@@ -129,6 +153,7 @@ public class Matriks {
 
         } catch (FileNotFoundException e) {
             System.out.print("File tidak ditemukan");
+            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -143,9 +168,9 @@ public class Matriks {
         System.out.print("Masukkan jumlah sampel: ");
         int baris = input.nextInt();
 
-        Matriks m = new Matriks(baris + 1, kolom);
-        for (int i = 0; i < baris; i++) {
-            for (int j = 0; j < kolom; j++) {
+        Matriks m = new Matriks(baris, kolom + 1);
+        for (int i = 0; i < m.baris; i++) {
+            for (int j = 0; j < m.kolom; j++) {
                 m.ELMT[i][j] = input.nextDouble();
             }
         }

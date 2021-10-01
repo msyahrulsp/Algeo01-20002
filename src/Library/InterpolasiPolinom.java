@@ -42,9 +42,8 @@ public class InterpolasiPolinom {
         return x;
     }
 
-    public static Matriks makePolinom()
+    public static Matriks makePolinom(Matriks m)
     {
-        Matriks m = readPolinom();
         int i, j;
         int nBrs = m.baris;
         Matriks n = new Matriks(nBrs, nBrs+1);
@@ -58,27 +57,16 @@ public class InterpolasiPolinom {
             }
             n.ELMT[i][nBrs] = m.ELMT[i][1];
         }
-        // done
-
-        // n = 3
-        // baris 3 kolom 2
-        // baris 3 kolom a0, a1x, a2x^2, y => 4 kolom
-
         return n;
     }
 
-    public static void polinomSolution() {
+    public static void polinomSolution(Matriks m, double x) {
         
         double taksirResult = 0;
-        Matriks o = makePolinom();
+        Matriks o = m;
         GaussJordanElimination.gaussJordanElimination(o);
-        double x = readX();
         double[] result = isOneSolution(o);
-        
 
-        // displaySPLSolution(result);
-        
-        // gaussSolution(makePolinom());
         System.out.print("Penyelesaian sistem persamaan dengan metode eliminasi Gauss menghasilkan: ");
         System.out.println("");
         for (int i=0;i<result.length-1;i++) {
@@ -100,7 +88,6 @@ public class InterpolasiPolinom {
         }
 
         System.out.format("Dengan menggunakan polinom ini, maka nilai fungsi pada x = %.3f \ndapat ditaksir menghasilkan p%d(%.3f) = %f", x, result.length-1, x, taksirResult);
-        // displayMatrix(m);
     }
 
     public static void displaySPLSolution(double[] result) {

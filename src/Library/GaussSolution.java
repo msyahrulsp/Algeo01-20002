@@ -9,16 +9,16 @@ public class GaussSolution {
         System.out.println("Hasil Eliminasi Gauss: ");
         m.displayMatriks();
         if (isNoSolution(m)) {
-            System.out.println("Sistem persamaan linear ini tidak memiliki solusi");
+            System.out.println("\nSistem persamaan linear ini tidak memiliki solusi");
         }
         else if (isInfinitySolutions(m)) {
-            System.out.println("Sistem persamaan linear ini memiliki banyak solusi, dengan: ");
+            System.out.println("\nSistem persamaan linear ini memiliki banyak solusi, dengan: ");
             String[] result = parametricSolutions(m);
             Matriks.displaySPLSolution(result);
         }
         else {
             double[] result = isOneSolution(m);
-            System.out.println("Sistem persamaan linear ini memiliki 1 solusi unik, yaitu:");
+            System.out.println("\nSistem persamaan linear ini memiliki 1 solusi unik, yaitu:");
             Matriks.displaySPLSolution(result);
         }
     }

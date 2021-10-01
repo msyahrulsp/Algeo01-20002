@@ -13,7 +13,7 @@ public class FileOut {
 
             if (!folder.exists()) folder.mkdir();
 
-            System.out.print("> Masukkan nama file: ");
+            System.out.print("\n> Masukkan nama file: ");
             Scanner scanner = new Scanner(System.in);
             String fileName = "output_" + scanner.nextLine();
 
@@ -21,7 +21,7 @@ public class FileOut {
             File file = new File(new File(path + "/test/" + fileName).getCanonicalPath());
 
             while (file.exists()) {
-                System.out.println("File sudah ada. Silahkan gunakan nama lain");
+                System.out.println("\nFile sudah ada. Silahkan gunakan nama lain");
                 System.out.print("> Masukkan nama file: ");
                 fileName = "output_" + scanner.nextLine();
 

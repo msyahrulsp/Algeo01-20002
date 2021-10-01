@@ -19,15 +19,6 @@ public class GaussJordanInverseSolution {
         } else {
             n = GaussJordanInverse.makeInverse(n);
             System.out.println("Inverse Matriks: ");
-            // for (int i=0;i<n.baris;i++)
-            // {
-            //     for (int j=0;j<n.kolom;j++)
-            //     {
-            //         if ( 1/ n.ELMT[i][j] < 0 ) {
-            //             n.ELMT[i][j] = 0;
-            //         }
-            //     }
-            // }
             n.displayMatriks();
         }
     }
